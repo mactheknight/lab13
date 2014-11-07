@@ -20,20 +20,56 @@ player = drawpad.create_oval(390,580,410,600, fill="white")
 
 # Create your "enemies" here, before the class
 
-circle = drawpad.create_oval(10, 10, 40, 40, fill='yellow')
+enemy1 = drawpad.create_oval(10, 400, 40, 430, fill='lavender')
 direction = 1
+
+enemy2 = drawpad.create_oval(10, 270, 40, 300, fill='lightblue')
+direction = 1
+
+enemy3 = drawpad.create_oval(10, 110, 40, 140, fill='pink')
+direction = 1
+
+        # Animating the enemies
 
 def animate():
     global direction
-    x1, y1, x2, y2 = drawpad.coords(circle)
+    x1, y1, x2, y2 = drawpad.coords(enemy1)
     if x2 > drawpad.winfo_width(): 
         direction = - 5
     elif x1 < 0:
         direction = 5
 
-drawpad.move(circle,direction,0)
-drawpad.after(1, animate)
+    drawpad.move(enemy1,direction,0)
+    drawpad.after(4, animate)
 animate()
+
+
+def animate2():
+    global direction
+    x1, y1, x2, y2 = drawpad.coords(enemy2)
+    if x2 > drawpad.winfo_width(): 
+        direction = - 5
+    elif x1 < 0:
+        direction = 5
+        
+    drawpad.move(enemy2,direction,0)
+    drawpad.after(20, animate2)
+animate2()
+
+        
+def animate3():
+    global direction
+    x1, y1, x2, y2 = drawpad.coords(enemy3)
+    if x2 > drawpad.winfo_width(): 
+        direction = - 5
+    elif x1 < 0:
+        direction = 5
+
+    drawpad.move(enemy3,direction,0)
+    drawpad.after(15, animate3)
+animate3()
+
+        # Creating the buttons
 
 class MyApp:
 	def __init__(self, parent):
@@ -80,27 +116,25 @@ class MyApp:
 	   global oval
 	   global player
 	   
-	   drawpad.move(player,0,-20)
+	   drawpad.move(player,0,-10)
 		
 	def leftClicked(self,event):
 	   global oval
 	   global player
 	   
-	   drawpad.move(player,-20,0)	
+	   drawpad.move(player,-10,0)	
 	   
 	def rightClicked(self,event):
 	   global oval
 	   global player
 	   
-	   drawpad.move(player,20,0)
+	   drawpad.move(player,10,0)
 	   
 	def downClicked(self,event):
 	   global oval
 	   global player
 	   
-	   drawpad.move(player,0,20)
-	   
-	   
-	   
+	   drawpad.move(player,0,10)
+	  
 app = MyApp(root)
 root.mainloop()
